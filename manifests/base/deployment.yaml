@@ -1,0 +1,27 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: prova-argocd
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: prova-argocd
+  template:
+    metadata:
+      labels:
+        app: prova-argocd
+        app.kubernetes.io/component: backstage
+        backstage.io/kubernetes-id: argocd
+    spec:
+      containers:
+        - name: prova-argocd
+          image: quay.io/quay.io/argoproj/argocd:v2.9.5/prova-argocd:latest
+          ports:
+            - name: http-80
+              containerPort: 80
+              protocol: TCP
+          resources:
+            limits:
+              memory: '128Mi'
+              cpu: '500m'

@@ -1,0 +1,18 @@
+
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: prova-argocd-gitops
+  description: Contains the ArgoCD manifests for prova-argocd
+  annotations:
+    argocd/app-name: prova-argocd-gitops
+    backstage.io/kubernetes-id: prova-argocd-gitops
+    backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: BlackMamba97s/prova-argocd-gitops
+spec:
+  type: gitops
+  system: argocd
+  lifecycle: production
+  owner: BlackMamba97
+  dependsOn:
+    - component:default/backstagedocs
